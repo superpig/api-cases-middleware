@@ -20,5 +20,5 @@ const express = require('express');
 const apiCasesMiddleware = require('api-cases-middleware');
 
 const app = express();
-app.use(apiCasesMiddleware);
+app.use(apiCasesMiddleware('./casesConfig.js'));
 ```
