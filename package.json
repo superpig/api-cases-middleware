@@ -1,0 +1,27 @@
+{
+  "name": "api-cases-middleware",
+  "version": "0.0.1",
+  "description": "a middleware which customes api case for swagger-jsblade",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superpig/api-cases-middleware.git"
+  },
+  "keywords": [
+    "api",
+    "cases",
+    "swagger-jsblade"
+  ],
+  "author": "zhuchao02 <zhuchao02@meituan.com> (https://github.com/superpig)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superpig/api-cases-middleware/issues"
+  },
+  "homepage": "https://github.com/superpig/api-cases-middleware#readme",
+  "dependencies": {
+    "fs-extra": "^3.0.1"
+  }
+}
