@@ -21,7 +21,9 @@ module.exports = function (caseConfig) {
         try {
             apiCaseFiles = fs.readdirSync(mockDir);
         } catch (error) {
-            console.log('读取目录 ' + mockDir + ' 出错');
+            console.log('读取目录 mock 出错');
+            next();
+            return;
         }
 
         if (apiCaseFiles.length !== 0) {
@@ -29,7 +31,7 @@ module.exports = function (caseConfig) {
             
             if (matchedPath) {
                 const caseNum = configPaths[matchedPath];
-                const composeFileName = matchedPath.replace(/\//g, '-') + '.json';
+                const composeFileName = matchedPath.substr(1).replace(/\//g, '-') + '.json';
 
                 // 如果caseNum为0或者不传，则透传接口
                 if (!caseNum) {
@@ -46,7 +48,9 @@ module.exports = function (caseConfig) {
                         try {
                             fileObj = fse.readJsonSync(CASE_FILE)
                         } catch (error) {
-                            console.log('读取文件 ' + CASE_FILE + ' 出错');      
+                            console.log('读取 cases 文件 出错');
+                            next();
+                            return;      
                         }
 
                         const requestCase = fileObj.cases[caseNum - 1];
