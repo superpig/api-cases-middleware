@@ -5,6 +5,12 @@ const path = require('path');
 module.exports = function (caseConfig) {
 
     return function (req, res, next) {
+        // 如果没有配置文件，直接透传
+        if (!caseConfig) {
+            next();
+            return;
+        }
+        
         const config = require(path.resolve(caseConfig));
         const requestPath = req.swagger.pathName;
         const mockDir = config.mockDir;
