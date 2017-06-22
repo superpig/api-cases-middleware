@@ -65,7 +65,7 @@ module.exports = function (caseConfig) {
 
 function hasPathConfig (pathsObj, requestPath) {
     for (let key in pathsObj) {
-        if (requestPath.indexOf(key) !== -1) {
+        if (requestPath === key){
             return key;
         }
     }
