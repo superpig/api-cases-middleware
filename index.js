@@ -42,7 +42,7 @@ module.exports = function (caseConfig) {
                 for (let i = 0, len = apiCaseFiles.length; i < len; i++) {
                     const fileName = apiCaseFiles[i];
                     if (fileName === composeFileName) {
-                        const CASE_FILE = mockDir + '/' + fileName;
+                        const CASE_FILE = mockDir + fileName;
                         let fileObj = {};
 
                         try {
