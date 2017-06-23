@@ -13,6 +13,7 @@ module.exports = function (caseConfig) {
         
         const config = require(path.resolve(caseConfig));
         const requestPath = req.swagger.pathName;
+        const originalUrl = req.originalUrl;
         const mockDir = config.mockDir;
         const basePath = config.basePath;
         const configPaths = config.path;
@@ -27,7 +28,7 @@ module.exports = function (caseConfig) {
         }
 
         if (apiCaseFiles.length !== 0) {
-            const matchedPath = hasPathConfig(configPaths, requestPath);
+            const matchedPath = hasPathConfig(configPaths, requestPath, originalUrl, basePath);
             
             if (matchedPath) {
                 const caseNum = configPaths[matchedPath];
@@ -63,9 +64,11 @@ module.exports = function (caseConfig) {
     }
 };
 
-function hasPathConfig (pathsObj, requestPath) {
+function hasPathConfig (pathsObj, requestPath, originalUrl, basePath) {
     for (let key in pathsObj) {
-        if (requestPath === key){
+        const entirePath = basePath + key;
+        if (requestPath === key || requestPath ===  entirePath  || 
+            originalUrl === key || originalUrl === entirePath){
             return key;
         }
     }
