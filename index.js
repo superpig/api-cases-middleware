@@ -10,7 +10,7 @@ module.exports = function (caseConfig) {
             next();
             return;
         }
-        
+        delete require.cache(path.resolve(caseConfig));
         const config = require(path.resolve(caseConfig));
         const requestPath = req.swagger.pathName;
         const originalUrl = req.originalUrl;
