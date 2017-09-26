@@ -1,6 +1,6 @@
 {
   "name": "api-cases-middleware",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "a middleware which customes api case for swagger-jsblade",
   "main": "dist/index",
   "scripts": {
