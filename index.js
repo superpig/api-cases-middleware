@@ -66,12 +66,26 @@ module.exports = function (caseConfig) {
 };
 
 function hasPathConfig (pathsObj, requestPath, originalUrl, basePath) {
+    const matchArr = [];
     for (let key in pathsObj) {
         const entirePath = basePath + key;
         if (requestPath === key || requestPath ===  entirePath  || 
             originalUrl === key || originalUrl === entirePath){
             return key;
         }
+        if (originalUrl.indexOf(key) > -1) {
+            matchArr.push(key);
+        }
     }
-    return false;
+    
+    let longestMatchedPath = '';
+    // 模糊匹配，去匹配最长的路径
+    if (matchArr.length) {
+        for (let i = 0, len = matchArr.length; i < len; i++) {
+            if (matchArr[i].length > longestMatchedPath.length) {
+                longestMatchedPath = matchArr[i];
+            }
+        }
+    }
+    return longestMatchedPath;
 }
